@@ -9,7 +9,8 @@
         :root {
             --primary-color: #2c3e50; /* Dark Blue */
             --secondary-color: #3498db; /* Light Blueish */
-            --accent-color: #e74c3c; /* Red for highlights */
+            --accent-color: #e74c3c; /* Red for contact/highlights */
+            --leet-color: #f39c12; /* Orange for LeetCode */
             --bg-light: #f4f7f6;
             --text-dark: #333;
         }
@@ -93,28 +94,35 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             margin-top: 2rem;
             list-style: none;
+            flex-wrap: wrap; /* Allows buttons to wrap on small screens */
         }
 
         .social-btn {
             display: inline-block;
-            padding: 10px 25px;
+            padding: 10px 20px;
             background-color: var(--primary-color);
             color: white;
             text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.2s;
             font-weight: bold;
+            font-size: 0.9rem;
         }
 
         .social-btn:hover {
             background-color: var(--secondary-color);
+            transform: translateY(-2px);
         }
         
-        .social-btn.leet { background-color: #f39c12; } /* Orange for Leetcode styling */
+        /* Specific styling for different buttons */
+        .social-btn.leet { background-color: var(--leet-color); }
         .social-btn.leet:hover { background-color: #d68910; }
+
+        .social-btn.email { background-color: var(--accent-color); }
+        .social-btn.email:hover { background-color: #c0392b; }
 
 
         /* Video Grid Styles */
@@ -147,7 +155,14 @@
             text-decoration: none;
             color: var(--primary-color);
             font-weight: 600;
+            /* Ensure long titles don't break layout */
+            white-space: nowrap; 
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
+         .video-card a:hover {
+             color: var(--secondary-color);
+         }
 
         /* Footer */
         footer {
@@ -179,11 +194,26 @@
             </div>
 
             <ul class="social-links">
-                <li><a href="https://www.linkedin.com/" target="_blank" class="social-btn">LinkedIn Profile</a></li>
-                
-                <li><a href="https://github.com/" target="_blank" class="social-btn">GitHub Profile</a></li>
-                
-                <li><a href="https://leetcode.com/" target="_blank" class="social-btn leet">LeetCode Account</a></li>
+                <li>
+                    <a href="https://www.linkedin.com/in/tanisha-nagwani-36249a302/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-btn">
+                        LinkedIn Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/tanishanagwani14" target="_blank" class="social-btn">
+                        GitHub Profile
+                    </a>
+                </li>
+                <li>
+                    <a href="https://leetcode.com/u/tanishanagwanii/" target="_blank" class="social-btn leet">
+                        LeetCode Account
+                    </a>
+                </li>
+                 <li>
+                    <a href="mailto:tanishanagwani14@gmail.com" class="social-btn email">
+                        Email Me
+                    </a>
+                </li>
             </ul>
         </div>
     </section>
@@ -234,7 +264,7 @@
     </section>
 
     <footer>
-        <p>© 2023 Tanisha Nagwani. All rights reserved.</p>
+        <p>MY PORTFOLIO</p>
     </footer>
 
 </body>
