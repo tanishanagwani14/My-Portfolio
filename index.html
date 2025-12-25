@@ -1,252 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tanisha Nagwani | Portfolio</title>
-    <style>
-        /* --- CSS Styles --- */
-        :root {
-            --primary-color: #2c3e50; /* Dark Blue */
-            --secondary-color: #3498db; /* Light Blueish */
-            --accent-color: #e74c3c; /* Red for contact/highlights */
-            --leet-color: #f39c12; /* Orange for LeetCode */
-            --bg-light: #f4f7f6;
-            --text-dark: #333;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanisha Nagwani | Portfolio</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+:root{
+  --bg:#f4f7f6;
+  --card:#ffffff;
+  --text:#333;
+  --primary:#2c3e50;
+  --secondary:#3498db;
+}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--bg-light);
-        }
+body.dark{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#e5e7eb;
+  --primary:#60a5fa;
+  --secondary:#38bdf8;
+}
 
-        /* Container for central alignment */
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-            padding: 20px;
-        }
+*{margin:0;padding:0;box-sizing:border-box}
 
-        /* Header Section */
-        header {
-            background: var(--primary-color);
-            color: white;
-            padding: 3rem 0;
-            text-align: center;
-        }
+body{
+  font-family:'Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  transition:.3s;
+}
 
-        header h1 {
-            font-size: 3rem;
-            margin-bottom: 10px;
-        }
+/* ===== COMMON ===== */
+.container{max-width:1100px;margin:auto;padding:40px 20px}
+h2{text-align:center;margin-bottom:40px}
 
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
+/* ===== HERO ===== */
+header{
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  padding:100px 20px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
 
-        /* General Section Styles */
-        section {
-            padding: 3rem 0;
-            border-bottom: 1px solid #ddd;
-        }
+header h1{font-size:3.2rem}
+header p{margin-top:15px;font-size:1.2rem;opacity:.95}
 
-        section h2 {
-            text-align: center;
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: var(--primary-color);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+/* Typing */
+#typing{
+  font-weight:bold;
+  border-right:3px solid #fff;
+  padding-right:5px;
+}
 
-        section h3 {
-            color: var(--secondary-color);
-            margin: 1.5rem 0 1rem 0;
-            font-size: 1.5rem;
-            border-left: 5px solid var(--secondary-color);
-            padding-left: 10px;
-        }
+/* Toggle */
+.toggle{
+  position:absolute;
+  top:20px;
+  right:20px;
+  background:#fff;
+  color:#000;
+  border:none;
+  padding:8px 15px;
+  border-radius:20px;
+  cursor:pointer;
+  font-weight:bold;
+}
 
-        /* About Section Styles */
-        .about-content {
-            text-align: center;
-            font-size: 1.1rem;
-            max-width: 800px;
-            margin: auto;
-        }
+/* Hero buttons */
+.hero-btns{
+  margin-top:30px;
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+}
 
-        .highlight {
-            color: var(--secondary-color);
-            font-weight: bold;
-        }
+.hero-btns a{
+  background:#fff;
+  color:#000;
+  padding:12px 20px;
+  border-radius:25px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:.3s;
+}
 
-        /* Social Links Styles */
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 2rem;
-            list-style: none;
-            flex-wrap: wrap; /* Allows buttons to wrap on small screens */
-        }
+.hero-btns a:hover{transform:scale(1.05)}
 
-        .social-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease, transform 0.2s;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
+/* ===== ABOUT ===== */
+.about p{
+  max-width:800px;
+  margin:auto;
+  text-align:center;
+  font-size:1.1rem;
+}
 
-        .social-btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-        
-        /* Specific styling for different buttons */
-        .social-btn.leet { background-color: var(--leet-color); }
-        .social-btn.leet:hover { background-color: #d68910; }
+.social{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
 
-        .social-btn.email { background-color: var(--accent-color); }
-        .social-btn.email:hover { background-color: #c0392b; }
+.social a{
+  padding:10px 18px;
+  background:var(--primary);
+  color:#fff;
+  text-decoration:none;
+  border-radius:6px;
+}
 
+/* ===== PROJECTS ===== */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
 
-        /* Video Grid Styles */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 2rem;
-        }
+.card{
+  background:var(--card);
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 5px 15px rgba(0,0,0,.15);
+  transition:.3s;
+  animation:fadeUp .8s ease;
+}
 
-        .video-card {
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-            text-align: center;
-        }
+.card:hover{transform:translateY(-8px)}
 
-        .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border-color: var(--secondary-color);
-        }
+.card a{
+  display:inline-block;
+  margin-top:10px;
+  background:var(--secondary);
+  color:#fff;
+  padding:7px 15px;
+  border-radius:5px;
+  text-decoration:none;
+}
 
-        .video-card a {
-            display: block;
-            padding: 20px 10px;
-            text-decoration: none;
-            color: var(--primary-color);
-            font-weight: 600;
-            /* Ensure long titles don't break layout */
-            white-space: nowrap; 
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-         .video-card a:hover {
-             color: var(--secondary-color);
-         }
+/* ===== GITHUB ===== */
+.github{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:25px;
+}
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background: var(--primary-color);
-            color: white;
-            margin-top: 2rem;
-        }
-    </style>
+.github img{
+  width:100%;
+  border-radius:10px;
+}
+
+/* ===== ANIMATION ===== */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ===== FOOTER ===== */
+footer{
+  background:var(--primary);
+  color:#fff;
+  text-align:center;
+  padding:25px;
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <div class="container">
-            <h1>Tanisha Nagwani</h1>
-            <p>Integrated MCA Student | Developer | Problem Solver</p>
-        </div>
-    </header>
+<header>
+<button class="toggle" onclick="toggleTheme()">🌙</button>
 
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <p>
-                    Hello! I am Tanisha Nagwani. I am currently pursuing an <span class="highlight">Integrated MCA (5-year course)</span> from <span class="highlight">IIPS, DAVV</span>. 
-                    I am currently in my <span class="highlight">5th Semester</span>, focused on honing my skills in software development and data structures.
-                </p>
-            </div>
+<h1>Tanisha Nagwani</h1>
+<p>
+<span id="typing"></span>
+</p>
 
-            <ul class="social-links">
-                <li>
-                    <a href="https://www.linkedin.com/in/tanisha-nagwani-36249a302/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-btn">
-                        LinkedIn Profile
-                    </a>
-                </li>
-                <li>
-                    <a href="https://github.com/tanishanagwani14" target="_blank" class="social-btn">
-                        GitHub Profile
-                    </a>
-                </li>
-                <li>
-                    <a href="https://leetcode.com/u/tanishanagwanii/" target="_blank" class="social-btn leet">
-                        LeetCode Account
-                    </a>
-                </li>
-                 <li>
-                    <a href="mailto:tanishanagwani14@gmail.com" class="social-btn email">
-                        Email Me
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </section>
+<div class="hero-btns">
+<a href="#projects">View Projects</a>
+<a href="resume.pdf" download>Download Resume</a>
+</div>
+</header>
 
-    <section id="videos">
-        <div class="container">
-            <h2>Video Solutions & Walkthroughs</h2>
-            <p style="text-align: center; margin-bottom: 2rem;">Below are links to my YouTube video explanations for various academic assessments.</p>
+<section class="about">
+<div class="container">
+<h2>About Me</h2>
+<p>
+Integrated MCA student at <b>IIPS, DAVV</b>, passionate about
+development, data structures & real-world problem solving.
+</p>
 
-            <h3>Internal 1 Solutions</h3>
-            <div class="video-grid">
-                <div class="video-card">
-                    <a href="https://youtu.be/5bu3ixQCTJw?si=CYmNPH1e5Go1L9Ak" target="_blank">📺 Section A Solution</a>
-                </div>
-                <div class="video-card">
-                    <a href="https://youtu.be/5bu3ixQCTJw?si=CYmNPH1e5Go1L9Ak" target="_blank">📺 Section B Solution</a>
-                </div>
-                <div class="video-card">
-                    <a href="https://youtu.be/5bu3ixQCTJw?si=CYmNPH1e5Go1L9Ak" target="_blank">📺 Section C Solution</a>
-                </div>
-                <div class="video-card">
-                    <a href="https://youtu.be/5bu3ixQCTJw?si=CYmNPH1e5Go1L9Ak" target="_blank">📺 Section D Solution</a>
-                </div>
-            </div>
+<div class="social">
+<a href="https://github.com/tanishanagwani14" target="_blank">GitHub</a>
+<a href="https://www.linkedin.com/in/tanisha-nagwani-36249a302/" target="_blank">LinkedIn</a>
+<a href="https://leetcode.com/u/tanishanagwanii/" target="_blank">LeetCode</a>
+</div>
+</div>
+</section>
 
-        
+<section id="projects">
+<div class="container">
+<h2>Projects</h2>
 
-        </div>
-    </section>
+<div class="grid">
+<div class="card">
+<h3>AI To-Do List</h3>
+<p>Smart task manager with clean UI.</p>
+<a href="https://tanishanagwani14.github.io/todo-list-app/" target="_blank">Live</a>
+</div>
 
-    <footer>
-        <p>© 2023 Tanisha Nagwani. All rights reserved.</p>
-    </footer>
+<div class="card">
+<h3>AI Scientific Calculator</h3>
+<p>Standard + scientific calculator.</p>
+<a href="https://tanishanagwani14.github.io/ai-scientific-calculator/" target="_blank">Live</a>
+</div>
+
+<div class="card">
+<h3>Explore Bharat</h3>
+<p>Tourism & culture exploration platform.</p>
+<a href="https://tanishanagwani14.github.io/Explore-Bharat/" target="_blank">Live</a>
+</div>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<h2>GitHub Stats</h2>
+
+<div class="github">
+<img src="https://github-readme-stats.vercel.app/api?username=tanishanagwani14&show_icons=true&theme=transparent">
+<img src="https://github-readme-streak-stats.herokuapp.com/?user=tanishanagwani14&theme=transparent">
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=tanishanagwani14&layout=compact&theme=transparent">
+</div>
+</div>
+</section>
+
+<footer>
+© 2025 Tanisha Nagwani | Portfolio
+</footer>
+
+<script>
+/* Theme */
+function toggleTheme(){
+ document.body.classList.toggle("dark");
+ localStorage.setItem("theme",
+ document.body.classList.contains("dark")?"dark":"light");
+}
+if(localStorage.getItem("theme")==="dark"){
+ document.body.classList.add("dark");
+}
+
+/* Typing */
+const texts=[
+ "Integrated MCA Student",
+ "Frontend Developer",
+ "Problem Solver",
+ "JavaScript Enthusiast"
+];
+let i=0,j=0,cur="",isDel=false;
+function type(){
+ document.getElementById("typing").innerText=cur;
+ if(!isDel && j<=texts[i].length){
+  cur=texts[i].substring(0,j++);
+ }else if(isDel && j>=0){
+  cur=texts[i].substring(0,j--);
+ }
+ if(j===texts[i].length+1){isDel=true;setTimeout(type,800);return}
+ if(j===0 && isDel){isDel=false;i=(i+1)%texts.length}
+ setTimeout(type,isDel?60:100);
+}
+type();
+</script>
 
 </body>
 </html>
