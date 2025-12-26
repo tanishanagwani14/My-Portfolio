@@ -102,10 +102,14 @@
         section { padding: 100px 0; }
         .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 50px; }
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { background: var(--card-bg); border: 1px solid var(--card-border); padding: 30px; border-radius: 20px; transition: var(--transition); }
+        .card { background: var(--card-bg); border: 1px solid var(--card-border); padding: 30px; border-radius: 20px; transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
         .card:hover { transform: translateY(-10px); box-shadow: var(--glow); border-color: var(--primary); }
+        .card h3 { margin-bottom: 10px; }
+        .card p { color: var(--text-muted); margin-bottom: 20px; }
 
-        /* STATS SECTION FIX */
+        .playlist-card { border-left: 4px solid var(--secondary); }
+
+        /* STATS SECTION */
         .stats-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -176,19 +180,68 @@
         <h2 class="section-title reveal">Featured <span>Projects</span></h2>
         <div class="grid">
             <div class="card reveal">
-                <h3>🧠 AI To-Do List</h3>
-                <p>Smart task manager with priority sorting and local storage.</p>
-                <a href="https://tanishanagwani14.github.io/ToDo-List-App/" target="_blank" style="color:var(--primary); font-weight:700;">Live Demo →</a>
+                <div>
+                    <h3>🧠 AI To-Do List</h3>
+                    <p>Smart task manager with priority sorting and local storage.</p>
+                </div>
+                <a href="https://tanishanagwani14.github.io/ToDo-List-App/" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none">Live Demo →</a>
             </div>
             <div class="card reveal">
-                <h3>🧮 Scientific Calc</h3>
-                <p>Advanced calculation engine with a glassmorphism UI.</p>
-                <a href="https://tanishanagwani14.github.io/Ai-Scientific-Calculator/" target="_blank" style="color:var(--primary); font-weight:700;">Live Demo →</a>
+                <div>
+                    <h3>🧮 Scientific Calc</h3>
+                    <p>Advanced calculation engine with a glassmorphism UI.</p>
+                </div>
+                <a href="https://tanishanagwani14.github.io/Ai-Scientific-Calculator/" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none">Live Demo →</a>
             </div>
             <div class="card reveal">
-                <h3>🇮🇳 Explore Bharat</h3>
-                <p>Interactive platform showcasing Indian culture and tourism.</p>
-                <a href="https://tanishanagwani14.github.io/Explore-Bharat/" target="_blank" style="color:var(--primary); font-weight:700;">Live Demo →</a>
+                <div>
+                    <h3>🇮🇳 Explore Bharat</h3>
+                    <p>Interactive platform showcasing Indian culture and tourism.</p>
+                </div>
+                <a href="https://tanishanagwani14.github.io/Explore-Bharat/" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none">Live Demo →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="playlists">
+    <div class="container">
+        <h2 class="section-title reveal">DSA <span>Library</span></h2>
+        <p class="reveal" style="text-align: center; color: var(--text-muted); margin-bottom: 50px;">
+            Curated video resources for assignments, internal exams, and semester prep.
+        </p>
+
+        <div class="grid">
+            <div class="card playlist-card reveal">
+                <div>
+                    <h3>📘 DS Assignments</h3>
+                    <p>Step-by-step solutions to complex Data Structure assignments.</p>
+                </div>
+                <a href="https://youtube.com/playlist?list=PLbS2OCq_sX0B9w6kvwYTqRQvhR3b-LHt-" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none">Watch Playlist →</a>
+            </div>
+
+            <div class="card playlist-card reveal delay-100">
+                <div>
+                    <h3>📝 Internal Exam 1</h3>
+                    <p>Focused preparation material for the first internal assessment.</p>
+                </div>
+                <a href="https://youtube.com/playlist?list=PLbS2OCq_sX0A4AkF6nmqB9ALBQTEPOo3F" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none">Watch Playlist →</a>
+            </div>
+
+            <div class="card playlist-card reveal delay-200">
+                <div>
+                    <h3>📝 Internal Exam 2</h3>
+                    <p>Detailed breakdown of topics covered in the second internal.</p>
+                </div>
+                <a href="https://youtube.com/playlist?list=PLbS2OCq_sX0CFgdymp-005-J5MjVpad9E" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none">Watch Playlist →</a>
+            </div>
+
+            <div class="card playlist-card reveal delay-200">
+                <div>
+                    <h3>🎓 End Semesters</h3>
+                    <p>Comprehensive revision guide for final examinations.</p>
+                </div>
+                <a href="https://youtube.com/playlist?list=PLbS2OCq_sX0CUMv--QnUV1Xu-vx3eQlK1" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none">Watch Playlist →</a>
             </div>
         </div>
     </div>
@@ -197,8 +250,8 @@
 <section>
     <div class="container">
         <h2 class="section-title reveal">Coding <span>Activity</span></h2>
-        <div class="grid github-grid">
-            </div>
+       
+            
             <div class="stats-card reveal delay-100">
                 <img src="https://github-readme-streak-stats.herokuapp.com/?user=tanishanagwani14&theme=transparent&ring=ec4899&fire=6366f1&currStreakLabel=6366f1&currStreakNumLabel=475569&sideLabels=475569&dates=475569&hide_border=true" alt="Tanisha's Streak">
             </div>
