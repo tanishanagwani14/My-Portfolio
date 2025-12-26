@@ -17,12 +17,12 @@
             --bg: #f8fafc;
             --text-main: #0f172a;
             --text-muted: #475569;
-            --card-bg: rgba(255, 255, 255, 0.65);
+            --card-bg: rgba(255, 255, 255, 0.7);
             --card-border: rgba(255, 255, 255, 0.8);
             --nav-bg: rgba(255, 255, 255, 0.8);
-            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.1);
-            --glow: 0 0 20px rgba(99, 102, 241, 0.15);
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.1);
+            --glow: 0 0 25px rgba(99, 102, 241, 0.2);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         body.dark {
@@ -32,8 +32,8 @@
             --card-bg: rgba(30, 41, 59, 0.7);
             --card-border: rgba(255, 255, 255, 0.1);
             --nav-bg: rgba(15, 23, 42, 0.8);
-            --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-            --glow: 0 0 25px rgba(99, 102, 241, 0.3);
+            --shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.5);
+            --glow: 0 0 30px rgba(99, 102, 241, 0.4);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -42,93 +42,107 @@
             font-family: 'Outfit', sans-serif;
             background: var(--bg);
             color: var(--text-main);
-            transition: background 0.5s ease, color 0.5s ease;
+            transition: background 0.5s ease;
             overflow-x: hidden;
-            line-height: 1.6;
         }
 
-        /* BACKGROUND ANIMATION */
+        /* --- ADVANCED BACKGROUND --- */
         .bg-animation {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1; overflow: hidden; pointer-events: none;
         }
         .blob {
-            position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4;
-            animation: blobMove 20s infinite alternate ease-in-out;
+            position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.5;
+            animation: blobMove 25s infinite alternate ease-in-out;
         }
-        body.dark .blob { opacity: 0.2; }
-        .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: var(--primary); }
-        .blob-2 { top: 20%; right: -10%; width: 400px; height: 400px; background: var(--secondary); animation-delay: -5s; }
-        .blob-3 { bottom: -20%; left: 30%; width: 600px; height: 600px; background: var(--accent); animation-delay: -10s; }
+        .blob-1 { top: -10%; left: -10%; width: 600px; height: 600px; background: var(--primary); }
+        .blob-2 { top: 30%; right: -5%; width: 500px; height: 500px; background: var(--secondary); animation-delay: -7s; }
+        .blob-3 { bottom: -10%; left: 20%; width: 550px; height: 550px; background: var(--accent); animation-delay: -12s; }
 
         @keyframes blobMove {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(40px, -60px) scale(1.1); }
+            0% { transform: translate(0, 0) scale(1) rotate(0deg); }
+            100% { transform: translate(60px, -80px) scale(1.1) rotate(20deg); }
         }
 
-        .container { max-width: 1200px; margin: auto; padding: 0 20px; }
-        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
-        .text-gradient { background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 800; }
+        /* --- INTERACTIVE CURSOR GLOW --- */
+        .cursor-glow {
+            position: fixed; width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            border-radius: 50%; pointer-events: none; z-index: 9999;
+            transform: translate(-50%, -50%); transition: width 0.3s, height 0.3s;
+        }
 
-        /* NAVBAR */
+        .container { max-width: 1200px; margin: auto; padding: 0 25px; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* --- NAVBAR --- */
         nav {
-            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 15px 0;
-            background: var(--nav-bg); backdrop-filter: blur(12px); border-bottom: 1px solid var(--card-border);
+            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 18px 0;
+            background: var(--nav-bg); backdrop-filter: blur(15px); border-bottom: 1px solid var(--card-border);
         }
         .nav-content { display: flex; justify-content: space-between; align-items: center; }
-        .nav-links { display: flex; gap: 30px; }
-        .theme-btn { background: transparent; border: 1px solid var(--card-border); color: var(--text-main); padding: 8px 12px; border-radius: 50px; cursor: pointer; }
+        .nav-links a { text-decoration: none; font-weight: 500; color: var(--text-muted); margin-left: 25px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+        .theme-btn { background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main); padding: 10px 15px; border-radius: 50px; cursor: pointer; }
 
-        /* HERO */
+        /* --- HERO --- */
         header { min-height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; }
-        header h1 { font-size: clamp(3rem, 8vw, 5rem); letter-spacing: -2px; }
-        #typing { color: var(--secondary); font-weight: 600; }
+        header h1 { font-size: clamp(3.5rem, 10vw, 6rem); font-weight: 800; letter-spacing: -3px; line-height: 1; }
+        #typing { color: var(--secondary); }
 
-        /* BUTTONS */
-        .btn { padding: 14px 32px; border-radius: 50px; font-weight: 600; text-decoration: none; transition: var(--transition); display: inline-block; }
-        .btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+        /* --- BUTTONS --- */
+        .btn { padding: 16px 35px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; transition: var(--transition); }
+        .btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.4); }
+        .btn-primary:hover { transform: scale(1.05); }
 
-        /* ABOUT & SOCIALS */
-        .about-content { background: var(--card-bg); backdrop-filter: blur(10px); border: 1px solid var(--card-border); padding: 40px; border-radius: 24px; text-align: center; margin: auto; max-width: 850px; }
-        .social-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin-top: 25px; }
-        .social-icon { padding: 10px 18px; background: rgba(99, 102, 241, 0.08); color: var(--primary); border-radius: 12px; font-weight: 600; text-decoration: none; transition: 0.3s; border: 1px solid transparent; }
-        .social-icon:hover { background: var(--primary); color: white; transform: translateY(-3px); border-color: var(--primary); }
-        .gmail-btn { background: rgba(236, 72, 153, 0.1); color: var(--secondary); }
+        /* --- ADVANCED CARDS (3D TILT EFFECT) --- */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .card {
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            padding: 35px; border-radius: 25px; transition: var(--transition);
+            backdrop-filter: blur(10px); position: relative; overflow: hidden;
+            display: flex; flex-direction: column; height: 100%;
+            transform-style: preserve-3d; transform: perspective(1000px);
+        }
+        .card:hover { border-color: var(--primary); box-shadow: var(--shadow); }
+        .card h3 { font-size: 1.6rem; margin-bottom: 12px; transform: translateZ(20px); }
+        .card p { color: var(--text-muted); margin-bottom: 25px; flex-grow: 1; transform: translateZ(10px); }
+        
+        .card-link { font-weight: 700; color: var(--primary); text-decoration: none; display: inline-flex; align-items: center; }
+        .card-link::after { content: '→'; margin-left: 5px; transition: 0.3s; }
+        .card-link:hover::after { transform: translateX(5px); }
+
+        /* --- DSA LIBRARY SPECIFIC --- */
+        .playlist-card { border-left: 5px solid var(--secondary); }
+
+        /* --- SOCIAL LINKS --- */
+        .social-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
+        .social-icon { padding: 12px 22px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 15px; font-weight: 600; text-decoration: none; transition: 0.3s; color: var(--text-main); }
+        .social-icon:hover { background: var(--primary); color: white; transform: translateY(-5px); }
         .gmail-btn:hover { background: var(--secondary); border-color: var(--secondary); }
 
-        /* PROJECTS & PLAYLISTS */
-        section { padding: 100px 0; }
-        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 50px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .card { background: var(--card-bg); border: 1px solid var(--card-border); padding: 30px; border-radius: 20px; transition: var(--transition); display: flex; flex-direction: column; justify-content: space-between; height: 100%; }
-        .card:hover { transform: translateY(-10px); box-shadow: var(--glow); border-color: var(--primary); }
-        .card h3 { margin-bottom: 10px; }
-        .card p { color: var(--text-muted); margin-bottom: 20px; }
-
-        .playlist-card { border-left: 4px solid var(--secondary); }
-
-        /* STATS SECTION */
+        /* --- STATS SECTION --- */
         .stats-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 20px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 25px; padding: 20px; text-align: center;
         }
-        .stats-card:hover { transform: scale(1.03); border-color: var(--primary); }
-        .github-grid img { width: 100%; height: auto; border-radius: 10px; }
+        .stats-card img { width: 100%; height: auto; border-radius: 15px; }
 
-        footer { text-align: center; padding: 40px; background: var(--card-bg); border-top: 1px solid var(--card-border); }
+        footer { text-align: center; padding: 50px; background: var(--card-bg); border-top: 1px solid var(--card-border); margin-top: 100px; }
 
-        @media (max-width: 768px) { .nav-links { display: none; } }
+        @media (max-width: 768px) { .nav-links { display: none; } .cursor-glow { display: none; } }
     </style>
 </head>
 <body>
+
+<div class="cursor-glow" id="cursorGlow"></div>
 
 <div class="bg-animation">
     <div class="blob blob-1"></div>
@@ -138,11 +152,11 @@
 
 <nav>
     <div class="container nav-content">
-        <div class="logo"><span class="text-gradient">TN.</span></div>
+        <div class="logo"><span class="text-gradient" style="font-size: 1.8rem;">TN.</span></div>
         <div class="nav-links">
-            <a href="#about" style="text-decoration:none; color:var(--text-muted)">About</a>
-            <a href="#projects" style="text-decoration:none; color:var(--text-muted); margin-left:20px">Projects</a>
-            <a href="#playlists" style="text-decoration:none; color:var(--text-muted); margin-left:20px">Library</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#playlists">Library</a>
         </div>
         <button class="theme-btn" onclick="toggleTheme()" id="themeIcon">🌙</button>
     </div>
@@ -151,19 +165,21 @@
 <header>
     <div class="container reveal">
         <h1>Tanisha <span class="text-gradient">Nagwani</span></h1>
-        <div style="font-size: 1.5rem; margin: 20px 0 40px; color: var(--text-muted);">
+        <div style="font-size: 1.6rem; margin: 25px 0 45px; color: var(--text-muted); font-weight: 400;">
             I am a <span id="typing"></span>
         </div>
-        <a href="#projects" class="btn btn-primary">Explore Work</a>
+        <a href="#projects" class="btn btn-primary">View My Work</a>
     </div>
 </header>
 
 <section id="about">
     <div class="container">
-        <div class="about-content reveal">
-            <h2 style="margin-bottom: 15px;">Developer Profile</h2>
-            <p style="color:var(--text-muted); font-size:1.1rem;">
-                Integrated MCA student at <b>IIPS, DAVV</b>. Specialized in <b>Data Structures</b> and <b>Frontend Systems</b>. I build digital products with a focus on clean logic and beautiful design.
+        <div class="card reveal" style="text-align: center; max-width: 900px; margin: auto;">
+            <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Developer Profile</h2>
+            <p style="font-size: 1.2rem; line-height: 1.8;">
+                Integrated MCA student at <b>IIPS, DAVV</b>. I specialize in building highly 
+                interactive <b>Frontend Environments</b> and optimizing <b>Data Structures</b>. 
+                My goal is to create web experiences that are fast, intuitive, and visually stunning.
             </p>
             <div class="social-links">
                 <a href="https://github.com/tanishanagwani14" target="_blank" class="social-icon">GitHub</a>
@@ -177,28 +193,22 @@
 
 <section id="projects">
     <div class="container">
-        <h2 class="section-title reveal">Featured <span>Projects</span></h2>
+        <h2 style="text-align:center; font-size:2.8rem; margin-bottom:60px" class="reveal">Featured <span class="text-gradient">Projects</span></h2>
         <div class="grid">
-            <div class="card reveal">
-                <div>
-                    <h3>🧠 AI To-Do List</h3>
-                    <p>Smart task manager with priority sorting and local storage.</p>
-                </div>
-                <a href="https://tanishanagwani14.github.io/ToDo-List-App/" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none">Live Demo →</a>
+            <div class="card reveal tilt">
+                <h3>🧠 AI To-Do List</h3>
+                <p>Advanced task management system with real-time priority logic and local storage persistence.</p>
+                <a href="https://tanishanagwani14.github.io/ToDo-List-App/" target="_blank" class="card-link">Live Demo</a>
             </div>
-            <div class="card reveal">
-                <div>
-                    <h3>🧮 Scientific Calc</h3>
-                    <p>Advanced calculation engine with a glassmorphism UI.</p>
-                </div>
-                <a href="https://tanishanagwani14.github.io/Ai-Scientific-Calculator/" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none">Live Demo →</a>
+            <div class="card reveal tilt">
+                <h3>🧮 Scientific Engine</h3>
+                <p>Complex mathematical engine built with JS, featuring a responsive glassmorphism UI.</p>
+                <a href="https://tanishanagwani14.github.io/Ai-Scientific-Calculator/" target="_blank" class="card-link">Live Demo</a>
             </div>
-            <div class="card reveal">
-                <div>
-                    <h3>🇮🇳 Explore Bharat</h3>
-                    <p>Interactive platform showcasing Indian culture and tourism.</p>
-                </div>
-                <a href="https://rajgour617.github.io/Explore-Bharat/" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none">Live Demo →</a>
+            <div class="card reveal tilt">
+                <h3>🇮🇳 Explore Bharat</h3>
+                <p>An immersive digital journey showcasing India's cultural heritage through interactive web components.</p>
+                <a href="https://rajgaur617.github.io/Explore-Bharat/" target="_blank" class="card-link">Live Demo</a>
             </div>
         </div>
     </div>
@@ -206,42 +216,29 @@
 
 <section id="playlists">
     <div class="container">
-        <h2 class="section-title reveal">DSA <span>Library</span></h2>
-        <p class="reveal" style="text-align: center; color: var(--text-muted); margin-bottom: 50px;">
-            Curated video resources for assignments, internal exams, and semester prep.
-        </p>
-
+        <h2 style="text-align:center; font-size:2.8rem; margin-bottom:15px" class="reveal">DSA <span class="text-gradient">Library</span></h2>
+        <p class="reveal" style="text-align: center; color: var(--text-muted); margin-bottom: 50px;">Curated video resources for academic excellence and DSA mastery.</p>
+        
         <div class="grid">
-            <div class="card playlist-card reveal">
-                <div>
-                    <h3>📘 DS Assignments</h3>
-                    <p>Step-by-step solutions to complex Data Structure assignments.</p>
-                </div>
-                <a href="https://youtube.com/playlist?list=PLbS2OCq_sX0B9w6kvwYTqRQvhR3b-LHt-" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none">Watch Playlist →</a>
+            <div class="card playlist-card reveal tilt">
+                <h3>📘 DS Assignments</h3>
+                <p>Complete step-by-step video solutions for DSA curriculum assignments.</p>
+                <a href="https://youtube.com/playlist?list=PLbS2OCq_sX0B9w6kvwYTqRQvhR3b-LHt-" target="_blank" class="card-link">Watch Now</a>
             </div>
-
-            <div class="card playlist-card reveal delay-100">
-                <div>
-                    <h3>📝 Internal Exam 1</h3>
-                    <p>Focused preparation material for the first internal assessment.</p>
-                </div>
-                <a href="https://youtube.com/playlist?list=PLbS2OCq_sX0A4AkF6nmqB9ALBQTEPOo3F" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none">Watch Playlist →</a>
+            <div class="card playlist-card reveal tilt">
+                <h3>📝 Internal Prep I</h3>
+                <p>Focused high-yield topics and problem solving for first internal exams.</p>
+                <a href="https://youtube.com/playlist?list=PLbS2OCq_sX0A4AkF6nmqB9ALBQTEPOo3F" target="_blank" class="card-link">Watch Now</a>
             </div>
-
-            <div class="card playlist-card reveal delay-200">
-                <div>
-                    <h3>📝 Internal Exam 2</h3>
-                    <p>Detailed breakdown of topics covered in the second internal.</p>
-                </div>
-                <a href="https://youtube.com/playlist?list=PLbS2OCq_sX0CFgdymp-005-J5MjVpad9E" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none">Watch Playlist →</a>
+            <div class="card playlist-card reveal tilt">
+                <h3>📝 Internal Prep II</h3>
+                <p>Deep dive into advanced structures for the second internal assessment.</p>
+                <a href="https://youtube.com/playlist?list=PLbS2OCq_sX0CFgdymp-005-J5MjVpad9E" target="_blank" class="card-link">Watch Now</a>
             </div>
-
-            <div class="card playlist-card reveal delay-200">
-                <div>
-                    <h3>🎓 End Semesters</h3>
-                    <p>Comprehensive revision guide for final examinations.</p>
-                </div>
-                <a href="https://youtube.com/playlist?list=PLbS2OCq_sX0CUMv--QnUV1Xu-vx3eQlK1" target="_blank" style="color:var(--primary); font-weight:700; text-decoration:none">Watch Playlist →</a>
+            <div class="card playlist-card reveal tilt">
+                <h3>🎓 End-Sem Guide</h3>
+                <p>Comprehensive marathon revision playlist for the final semester exams.</p>
+                <a href="https://youtube.com/playlist?list=PLbS2OCq_sX0CUMv--QnUV1Xu-vx3eQlK1" target="_blank" class="card-link">Watch Now</a>
             </div>
         </div>
     </div>
@@ -249,21 +246,24 @@
 
 <section>
     <div class="container">
-        <h2 class="section-title reveal">Coding <span>Activity</span></h2>
-       
-            
-            <div class="stats-card reveal delay-100">
-                <img src="https://github-readme-streak-stats.herokuapp.com/?user=tanishanagwani14&theme=transparent&ring=ec4899&fire=6366f1&currStreakLabel=6366f1&currStreakNumLabel=475569&sideLabels=475569&dates=475569&hide_border=true" alt="Tanisha's Streak">
+        <h2 style="text-align:center; font-size:2.8rem; margin-bottom:60px" class="reveal">Coding <span class="text-gradient">Activity</span></h2>
+        <div class="grid">
+            <div class="stats-card reveal tilt">
+                <img src="https://github-readme-stats.vercel.app/api?username=tanishanagwani14&show_icons=true&theme=transparent&title_color=6366f1&text_color=475569&icon_color=ec4899&bg_color=00000000&hide_border=true" alt="Github Stats">
+            </div>
+            <div class="stats-card reveal tilt">
+                <img src="https://github-readme-streak-stats.herokuapp.com/?user=tanishanagwani14&theme=transparent&ring=ec4899&fire=6366f1&currStreakLabel=6366f1&currStreakNumLabel=475569&sideLabels=475569&dates=475569&hide_border=true" alt="Github Streak">
             </div>
         </div>
     </div>
 </section>
 
 <footer>
-    <p>© 2025 Tanisha Nagwani • Built with Passion</p>
+    <p>© 2025 Tanisha Nagwani • Built with Innovation & Passion</p>
 </footer>
 
 <script>
+    /* --- THEME --- */
     function toggleTheme() {
         document.body.classList.toggle('dark');
         const isDark = document.body.classList.contains('dark');
@@ -275,20 +275,47 @@
         document.getElementById('themeIcon').innerText = '☀️';
     }
 
+    /* --- CURSOR GLOW --- */
+    const cursor = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
+    /* --- 3D TILT PHYSICS --- */
+    const cards = document.querySelectorAll('.tilt');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 10;
+            const rotateY = (centerX - x) / 10;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+        });
+    });
+
+    /* --- REVEAL --- */
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    const texts = ["Integrated MCA Student.", "Frontend Developer.", "Problem Solver."];
+    /* --- TYPING --- */
+    const texts = ["Integrated MCA Student.", "Frontend Developer.", "Creative Coder.", "Problem Solver."];
     let count = 0, index = 0, isDeleting = false;
     (function type() {
         const current = texts[count % texts.length];
         if (isDeleting) index--; else index++;
         document.getElementById('typing').textContent = current.slice(0, index);
-        let speed = isDeleting ? 50 : 100;
-        if (!isDeleting && index === current.length) { speed = 2000; isDeleting = true; }
-        else if (isDeleting && index === 0) { isDeleting = false; count++; speed = 500; }
+        let speed = isDeleting ? 40 : 100;
+        if (!isDeleting && index === current.length) { speed = 2500; isDeleting = true; }
+        else if (isDeleting && index === 0) { isDeleting = false; count++; speed = 400; }
         setTimeout(type, speed);
     })();
 </script>
