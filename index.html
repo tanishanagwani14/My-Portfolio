@@ -97,11 +97,14 @@
         #typing { color: var(--secondary); }
 
         /* --- BUTTONS --- */
+        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
         .btn { padding: 16px 35px; border-radius: 50px; font-weight: 600; text-decoration: none; display: inline-block; transition: var(--transition); }
         .btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; box-shadow: 0 10px 20px -5px rgba(99, 102, 241, 0.4); }
         .btn-primary:hover { transform: scale(1.05); }
+        .btn-secondary { background: var(--card-bg); border: 1px solid var(--card-border); color: var(--text-main); }
+        .btn-secondary:hover { background: var(--primary); color: white; transform: scale(1.05); }
 
-        /* --- ADVANCED CARDS (3D TILT EFFECT) --- */
+        /* --- CARDS (3D TILT EFFECT) --- */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
         .card {
@@ -119,21 +122,12 @@
         .card-link::after { content: '→'; margin-left: 5px; transition: 0.3s; }
         .card-link:hover::after { transform: translateX(5px); }
 
-        /* --- DSA LIBRARY SPECIFIC --- */
-        .playlist-card { border-left: 5px solid var(--secondary); }
-
         /* --- SOCIAL LINKS --- */
         .social-links { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 30px; }
         .social-icon { padding: 12px 22px; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 15px; font-weight: 600; text-decoration: none; transition: 0.3s; color: var(--text-main); }
         .social-icon:hover { background: var(--primary); color: white; transform: translateY(-5px); }
+        .resume-btn:hover { background: var(--accent); color: white; border-color: var(--accent); }
         .gmail-btn:hover { background: var(--secondary); border-color: var(--secondary); }
-
-        /* --- STATS SECTION --- */
-        .stats-card {
-            background: var(--card-bg); border: 1px solid var(--card-border);
-            border-radius: 25px; padding: 20px; text-align: center;
-        }
-        .stats-card img { width: 100%; height: auto; border-radius: 15px; }
 
         footer { text-align: center; padding: 50px; background: var(--card-bg); border-top: 1px solid var(--card-border); margin-top: 100px; }
 
@@ -156,7 +150,7 @@
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
-            <a href="#playlists">Library</a>
+            <a href="Tanisha_Nagwani.pdf" target="_blank">Resume</a>
         </div>
         <button class="theme-btn" onclick="toggleTheme()" id="themeIcon">🌙</button>
     </div>
@@ -168,54 +162,61 @@
         <div style="font-size: 1.6rem; margin: 25px 0 45px; color: var(--text-muted); font-weight: 400;">
             I am a <span id="typing"></span>
         </div>
-        <a href="#projects" class="btn btn-primary">View My Work</a>
+        <div class="btn-group">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="Tanisha_Nagwani.pdf" target="_blank" class="btn btn-secondary">📄 View Resume</a>
+        </div>
     </div>
 </header>
 
-<section id="about">
+<section id="about" style="padding: 60px 0;">
     <div class="container">
         <div class="card reveal" style="text-align: center; max-width: 900px; margin: auto;">
             <h2 style="font-size: 2.2rem; margin-bottom: 20px;">Developer Profile</h2>
             <p style="font-size: 1.2rem; line-height: 1.8;">
-                Integrated MCA student at <b>IIPS, DAVV</b>. I specialize in building highly 
-                interactive <b>Frontend Environments</b> and optimizing <b>Data Structures</b>. 
-                My goal is to create web experiences that are fast, intuitive, and visually stunning.
+                Integrated MCA student at <b>IIPS, DAVV</b>. I specialize in <b>Full-Stack Web Development (MERN)</b>, <b>Mobile App Development (Flutter)</b>, and <b>AI/ML Model Integration</b>. My goal is to build scalable, intelligent, and user-centric digital solutions.
             </p>
             <div class="social-links">
                 <a href="https://github.com/tanishanagwani14" target="_blank" class="social-icon">GitHub</a>
                 <a href="https://www.linkedin.com/in/tanisha-nagwani-36249a302/" target="_blank" class="social-icon">LinkedIn</a>
-                <a href="https://leetcode.com/u/tanishanagwanii/" target="_blank" class="social-icon">LeetCode</a>
-                <a href="mailto:tanishanagwani19@gmail.com" class="social-icon gmail-btn">📧 Email Me</a>
+                <a href="https://leetcode.com/u/tanishanagwani14/" target="_blank" class="social-icon">LeetCode</a>
+                <a href="Tanisha_Nagwani.pdf" target="_blank" class="social-icon resume-btn">📄 Resume</a>
+                <a href="mailto:tanishanagwani14@gmail.com" class="social-icon gmail-btn">📧 Email Me</a>
             </div>
         </div>
     </div>
 </section>
 
-<section id="projects">
+<section id="projects" style="padding: 60px 0;">
     <div class="container">
         <h2 style="text-align:center; font-size:2.8rem; margin-bottom:60px" class="reveal">Featured <span class="text-gradient">Projects</span></h2>
         <div class="grid">
             <div class="card reveal tilt">
-                <h3>🧠 AI To-Do List</h3>
-                <p>Advanced task management system with real-time priority logic and local storage persistence.</p>
+                <h3>🎙️ AI Attendance System</h3>
+                <p>Smart attendance system featuring face recognition and ML voice embedding extraction for speaker identification.</p>
+                <a href="https://github.com/anishgoyal0603/ai-attendance-project-app" target="_blank" class="card-link">View Project</a>
+            </div>
+            <div class="card reveal tilt">
+                <h3>🌊 Water Management System</h3>
+                <p>Full-stack dashboard solution designed to monitor, track, and optimize regional water usage analytics.</p>
+                <a href="https://github.com/tanishanagwani14" target="_blank" class="card-link">View Project</a>
+            </div>
+            <div class="card reveal tilt">
+                <h3>📱 Meditate Career Institute App</h3>
+                <p>Cross-platform educational application built with Flutter and Firebase featuring real-time tracking and course modules.</p>
+                <a href="https://github.com/tanishanagwani14" target="_link" class="card-link">View Project</a>
+            </div>
+            <div class="card reveal tilt">
+                <h3>🧠 AI Task Manager</h3>
+                <p>Advanced task management web application featuring automated priority logic and local persistence.</p>
                 <a href="https://tanishanagwani14.github.io/ToDo-List-App/" target="_blank" class="card-link">Live Demo</a>
-            </div>
-            <div class="card reveal tilt">
-                <h3>🧮 Scientific Engine</h3>
-                <p>Complex mathematical engine built with JS, featuring a responsive glassmorphism UI.</p>
-                <a href="https://tanishanagwani14.github.io/Ai-Scientific-Calculator/" target="_blank" class="card-link">Live Demo</a>
-            </div>
-            <div class="card reveal tilt">
-                <h3>🇮🇳 Explore Bharat</h3>
-                <p>An immersive digital journey showcasing India's cultural heritage through interactive web components.</p>
-                <a href="https://rajgaur617.github.io/Explore-Bharat/" target="_blank" class="card-link">Live Demo</a>
             </div>
         </div>
     </div>
 </section>
 
 <footer>
-    <p>© 2025 Tanisha Nagwani • Built with Innovation & Passion</p>
+    <p>© 2026 Tanisha Nagwani • Built with Innovation & Passion</p>
 </footer>
 
 <script>
@@ -263,7 +264,7 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     /* --- TYPING --- */
-    const texts = ["Integrated MCA Student.", "Frontend Developer.", "Creative Coder.", "Problem Solver."];
+    const texts = ["Full-Stack MERN Developer.", "Flutter App Developer.", "AI-ML Enthusiast.", "Problem Solver."];
     let count = 0, index = 0, isDeleting = false;
     (function type() {
         const current = texts[count % texts.length];
